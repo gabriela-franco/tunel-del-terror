@@ -1,5 +1,16 @@
 const { getStore } = require("@netlify/blobs");
 
+function getVotesStore() {
+  const siteID = process.env.NETLIFY_SITE_ID;
+  const token = process.env.NETLIFY_AUTH_TOKEN;
+
+  if (siteID && token) {
+    return getStore("votos-tunel-terror", { siteID, token });
+  }
+
+  return getStore("votos-tunel-terror");
+}
+
 // Solo accesible con la clave secreta configurada en RESULTS_KEY (Netlify > Environment variables).
 // No se enlaza desde la interfaz de los padres para no sesgar el voto.
 exports.handler = async (event) => {
@@ -14,7 +25,7 @@ exports.handler = async (event) => {
     return { statusCode: 403, body: JSON.stringify({ error: "No autorizado" }) };
   }
 
-  const store = getStore("votos-tunel-terror");
+  const store = getVotesStore();
   const { blobs } = await store.list();
 
   const counts = {};

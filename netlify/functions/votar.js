@@ -2,6 +2,17 @@ const { getStore } = require("@netlify/blobs");
 
 const MAX_FIELD_LENGTH = 100;
 
+function getVotesStore() {
+  const siteID = process.env.NETLIFY_SITE_ID;
+  const token = process.env.NETLIFY_AUTH_TOKEN;
+
+  if (siteID && token) {
+    return getStore("votos-tunel-terror", { siteID, token });
+  }
+
+  return getStore("votos-tunel-terror");
+}
+
 function isValidField(value) {
   return typeof value === "string" && value.trim().length > 0 && value.trim().length <= MAX_FIELD_LENGTH;
 }
@@ -26,7 +37,7 @@ exports.handler = async (event) => {
 
   // Clave normalizada para detectar el mismo alumno/familia con distintas mayúsculas/espacios.
   const key = alumno.trim().toLowerCase();
-  const store = getStore("votos-tunel-terror");
+  const store = getVotesStore();
 
   const existing = await store.get(key);
   if (existing) {
