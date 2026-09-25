@@ -194,9 +194,65 @@ body {
 }
 
 @media (max-width: 480px) {
+  .path {
+    gap: 0.9rem;
+    padding: 1rem 0.5rem 1.5rem;
+    max-width: 100%;
+  }
+
+  .path::before {
+    left: 36px;
+  }
+
+  .path-point {
+    width: min(78vw, 280px);
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    padding: 0.2rem 0;
+    text-align: left;
+  }
+
   .path-point:nth-child(odd),
   .path-point:nth-child(even) {
     transform: none;
+  }
+
+  .path-point:nth-child(odd) {
+    align-self: flex-start;
+    margin-left: 0.8rem;
+  }
+
+  .path-point:nth-child(even) {
+    align-self: flex-end;
+    margin-right: 0.8rem;
+  }
+
+  .path-point-node {
+    flex-shrink: 0;
+  }
+
+  .path-point-thumb {
+    width: 58px;
+    height: 58px;
+  }
+
+  .path-point-label,
+  .path-point-note {
+    text-align: left;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .path-point-label {
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  .path-point-note {
+    font-size: 0.62rem;
+    line-height: 1.2;
   }
 }
 

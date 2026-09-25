@@ -184,4 +184,44 @@ export const proposals = [
       },
     ],
   },
+  {
+    id: "propuesta-c",
+    nombre: "Orfanato",
+    historia:
+      "Idea aún en desarrollo: se trabaja con la sensación de un colegio abandonado donde quedan huellas de infancia y pérdida, sin una escenografía cerrada aún definida para cada tramo.",
+    zonas: [
+      {
+        id: "foto-1",
+        nombre: "Referencia visual 1",
+        nota: "Imagen de la idea en desarrollo.",
+        foto: "images/orfanato/30099b57-97c2-4bae-99e1-23d42f92501a.JPG",
+        boceto: "images/orfanato/30099b57-97c2-4bae-99e1-23d42f92501a.JPG",
+        texto: "",
+      },
+      {
+        id: "foto-2",
+        nombre: "Referencia visual 2",
+        nota: "Imagen de la idea en desarrollo.",
+        foto: "images/orfanato/69c23b9a-9b9b-4645-89ca-88a8a14ae5a8.JPG",
+        boceto: "images/orfanato/69c23b9a-9b9b-4645-89ca-88a8a14ae5a8.JPG",
+        texto: "",
+      },
+    ],
+  },
+  {
+    id: "propuesta-d",
+    nombre: "Cualquiera de las anteriores + tramo final: La carpa de la última risa",
+    historia:
+      "En cualquiera de las propuestas, solo se cambiaría el tramo final: la zona final del recorrido se convertiría en una carpa de aire libre, situada al final del túnel de arcadas, en la parte de arriba. La idea es que la última sorpresa conecte con la parte infantil y con la actividad de manualidades para los peques.",
+    zonas: [
+      {
+        id: "tramo-final",
+        nombre: "Tramo final — La carpa de la última risa",
+        nota: "Solo cambia la parte final del recorrido.",
+        foto: "images/obra/escena-final.png",
+        boceto: "images/propuesta-b/tramo-final-boceto.png",
+        texto: "La última parte cambiaría para abrir un espacio de aire libre, más teatral y festivo, con un tono casi circense pero algo inquietante. El título sugerido sería: “🎪 La carpa de la última risa”. Esta sección se plantearía como la sorpresa final y la enlazaría con la parte de los niños, que podrían participar con manualidades o con una pequeña ambientación del propio tramo. No hace falta cambiar la entrada ni las arcadas; solo se redefiniría el último tramo como cierre del recorrido.",
+      },
+    ],
+  },
 ];
