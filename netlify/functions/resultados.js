@@ -1,14 +1,10 @@
-const { getStore } = require("@netlify/blobs");
+const STORE_KEY = "__tunel_votos_store__";
 
 function getVotesStore() {
-  const siteID = process.env.NETLIFY_SITE_ID;
-  const token = process.env.NETLIFY_AUTH_TOKEN;
-
-  if (siteID && token) {
-    return getStore("votos-tunel-terror", { siteID, token });
+  if (!globalThis[STORE_KEY]) {
+    globalThis[STORE_KEY] = new Map();
   }
-
-  return getStore("votos-tunel-terror");
+  return globalThis[STORE_KEY];
 }
 
 // Solo accesible con la clave secreta configurada en RESULTS_KEY (Netlify > Environment variables).
@@ -26,14 +22,10 @@ exports.handler = async (event) => {
   }
 
   const store = getVotesStore();
-  const { blobs } = await store.list();
-
   const counts = {};
   let total = 0;
 
-  for (const blob of blobs) {
-    const voto = await store.get(blob.key, { type: "json" });
-    if (!voto) continue;
+  for (const voto of store.values()) {
     counts[voto.propuesta] = (counts[voto.propuesta] || 0) + 1;
     total += 1;
   }

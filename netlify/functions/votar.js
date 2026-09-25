@@ -1,16 +1,11 @@
-const { getStore } = require("@netlify/blobs");
-
 const MAX_FIELD_LENGTH = 100;
+const STORE_KEY = "__tunel_votos_store__";
 
 function getVotesStore() {
-  const siteID = process.env.NETLIFY_SITE_ID;
-  const token = process.env.NETLIFY_AUTH_TOKEN;
-
-  if (siteID && token) {
-    return getStore("votos-tunel-terror", { siteID, token });
+  if (!globalThis[STORE_KEY]) {
+    globalThis[STORE_KEY] = new Map();
   }
-
-  return getStore("votos-tunel-terror");
+  return globalThis[STORE_KEY];
 }
 
 function isValidField(value) {
@@ -39,12 +34,11 @@ exports.handler = async (event) => {
   const key = alumno.trim().toLowerCase();
   const store = getVotesStore();
 
-  const existing = await store.get(key);
-  if (existing) {
+  if (store.has(key)) {
     return { statusCode: 409, body: JSON.stringify({ error: "Ya existe un voto para este alumno/a" }) };
   }
 
-  await store.setJSON(key, {
+  store.set(key, {
     alumno: alumno.trim(),
     propuesta: propuesta.trim(),
     timestamp: new Date().toISOString(),
