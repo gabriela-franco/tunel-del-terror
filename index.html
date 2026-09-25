@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Túnel del Terror — Vota tu propuesta favorita</title>
+  <link rel="stylesheet" href="styles.css?v=9" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>🎃 Túnel del Terror — ¡Ayúdanos a elegir!</h1>
+    <p>Recorre las dos propuestas y vota por la que más te guste.</p>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Propuestas"></nav>
+
+  <main id="proposal-panels"></main>
+
+  <div class="modal-overlay" id="modal-overlay" hidden>
+    <button class="modal-nav modal-nav-prev" id="modal-prev" aria-label="Escena anterior">‹</button>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
+      <h2 id="modal-title"></h2>
+      <div class="modal-images">
+        <figure>
+          <img id="modal-foto" src="" alt="" />
+          <figcaption>Foto real</figcaption>
+        </figure>
+        <figure>
+          <img id="modal-boceto" src="" alt="" />
+          <figcaption>Boceto / referencia</figcaption>
+        </figure>
+      </div>
+      <p id="modal-texto"></p>
+    </div>
+    <button class="modal-nav modal-nav-next" id="modal-next" aria-label="Escena siguiente">›</button>
+  </div>
+
+  <div class="modal-overlay" id="video-overlay" hidden>
+    <div class="modal modal-video-container" role="dialog" aria-modal="true" aria-labelledby="video-title">
+      <button class="modal-close" id="video-close" aria-label="Cerrar">✕</button>
+      <h2 id="video-title">Recorrido en video</h2>
+      <video id="video-player" class="proposal-video" controls></video>
+    </div>
+  </div>
+
+  <footer class="vote-footer">
+    <form id="vote-form">
+      <h2>Emite tu voto</h2>
+      <label for="alumno-nombre">Alumno/familia</label>
+      <input type="text" id="alumno-nombre" name="alumno" required autocomplete="off" />
+
+      <fieldset id="propuesta-fieldset">
+        <legend>Propuesta elegida</legend>
+      </fieldset>
+
+      <button type="submit" id="vote-submit">Votar</button>
+      <p id="vote-message" role="status" aria-live="polite"></p>
+    </form>
+  </footer>
+
+  <script type="module" src="script.js?v=9"></script>
+</body>
+</html>
