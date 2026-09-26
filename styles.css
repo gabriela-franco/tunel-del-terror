@@ -13,27 +13,38 @@
 
 body {
   margin: 0;
-  font-family: "Segoe UI", system-ui, sans-serif;
+  font-family: Georgia, "Times New Roman", serif;
   background: radial-gradient(circle at top, #241a30, var(--bg) 60%);
   color: var(--text);
   min-height: 100vh;
+  letter-spacing: 0.02em;
 }
 
 .site-header {
   text-align: center;
   padding: 2rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .site-header h1 {
   margin: 0 0 0.5rem;
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  color: var(--accent);
-  text-shadow: 0 0 12px rgba(255, 45, 85, 0.6);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  color: #ffd8df;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 1.1;
+  text-shadow: 0 0 12px rgba(255, 45, 85, 0.7), 2px 2px 0 rgba(0, 0, 0, 0.8);
 }
 
 .site-header p {
   color: var(--muted);
   margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 /* Tabs */
@@ -51,7 +62,10 @@ body {
   border: 2px solid transparent;
   border-radius: 999px;
   padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   cursor: pointer;
   min-height: 44px;
 }
