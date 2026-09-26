@@ -64,7 +64,8 @@ function renderPanels() {
 
       const thumb = document.createElement("span");
       thumb.className = "path-point-thumb";
-      thumb.style.backgroundImage = `url("${zona.foto}")`;
+      const thumbImage = zona.boceto || zona.foto;
+      thumb.style.backgroundImage = `url("${thumbImage}")`;
 
       const badge = document.createElement("span");
       badge.className = "path-point-badge";
@@ -214,13 +215,13 @@ function votoKey(alumno) {
   return alumno.trim().toLowerCase();
 }
 
-function getResultsKey() {
-  return document.body.dataset.resultsKey || "12345";
-}
-
 async function loadResults() {
+  if (!resultsTotalEl || !resultsListEl) {
+    return;
+  }
+
   try {
-    const response = await fetch(`/.netlify/functions/resultados?key=${encodeURIComponent(getResultsKey())}`);
+    const response = await fetch('/.netlify/functions/resultados');
     if (!response.ok) {
       resultsTotalEl.textContent = "Total: 0 votos";
       resultsListEl.innerHTML = "";
