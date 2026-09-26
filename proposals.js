@@ -82,8 +82,8 @@ export const proposals = [
         id: "arcada-4-5",
         nombre: "Arcada tramo 4-5 — El Demogorgon / Starcourt",
         nota: "La criatura entra en Hawkins y el horror se expande.",
-        foto: "images/propuesta-a/arcada-5-foto.jpg",
-        boceto: "images/propuesta-a/arcada-5-boceto.png",
+        foto: "images/propuesta-a/arcada-2-foto.jpg",
+        boceto: "images/propuesta-a/arcada-2-boceto.png",
         texto: "El monstruo entra en Hawkins. La dimensión del Upside Down se abre con demogorgones, paredes orgánicas, raíces, niebla, luces rojas y sonidos de respiración y gritos que anuncian la invasión del terror. Después, Starcourt Mall se convierte en el escenario del infierno: un laboratorio soviético con militares y científicos, demogorgones y una colmena que transforman el centro comercial en un laberinto de miedo, caos y destrucción total.",
       },
       {
