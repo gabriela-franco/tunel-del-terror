@@ -51,53 +51,64 @@ function renderPanels() {
       panel.appendChild(historia);
     }
 
-    const path = document.createElement("div");
-    path.className = "path";
+    const isCollectiveSala = proposal.id === "sala-colectiva";
 
-    proposal.zonas.forEach((zona, zonaIndex) => {
-      const point = document.createElement("button");
-      point.type = "button";
-      point.className = "path-point";
+    if (!isCollectiveSala) {
+      const path = document.createElement("div");
+      path.className = "path";
 
-      const node = document.createElement("span");
-      node.className = "path-point-node";
+      proposal.zonas.forEach((zona, zonaIndex) => {
+        const point = document.createElement("button");
+        point.type = "button";
+        point.className = "path-point";
 
-      const thumb = document.createElement("span");
-      thumb.className = "path-point-thumb";
-      const thumbImage = zona.boceto || zona.foto;
-      thumb.style.backgroundImage = `url("${thumbImage}")`;
+        const node = document.createElement("span");
+        node.className = "path-point-node";
 
-      const badge = document.createElement("span");
-      badge.className = "path-point-badge";
-      badge.textContent = String(zonaIndex + 1);
+        const thumb = document.createElement("span");
+        thumb.className = "path-point-thumb";
+        const thumbImage = zona.boceto || zona.foto;
+        thumb.style.backgroundImage = `url("${thumbImage}")`;
 
-      const label = document.createElement("span");
-      label.className = "path-point-label";
-      label.textContent = zona.nombre;
+        const badge = document.createElement("span");
+        badge.className = "path-point-badge";
+        badge.textContent = String(zonaIndex + 1);
 
-      node.append(thumb, badge);
-      point.append(node, label);
+        const label = document.createElement("span");
+        label.className = "path-point-label";
+        label.textContent = zona.nombre;
 
-      if (zona.nota) {
-        const nota = document.createElement("span");
-        nota.className = "path-point-note";
-        nota.textContent = zona.nota;
-        point.appendChild(nota);
+        node.append(thumb, badge);
+        point.append(node, label);
+
+        if (zona.nota) {
+          const nota = document.createElement("span");
+          nota.className = "path-point-note";
+          nota.textContent = zona.nota;
+          point.appendChild(nota);
+        }
+
+        point.addEventListener("click", () => openModal(proposal, zonaIndex));
+        path.appendChild(point);
+      });
+
+      if (proposal.video) {
+        const videoButton = document.createElement("button");
+        videoButton.type = "button";
+        videoButton.className = "video-open-button";
+        videoButton.textContent = "🎬 Ver video del recorrido";
+        videoButton.addEventListener("click", () => openVideo(proposal.video));
+        panel.append(path, videoButton);
+      } else {
+        panel.append(path);
       }
-
-      point.addEventListener("click", () => openModal(proposal, zonaIndex));
-      path.appendChild(point);
-    });
-
-    if (proposal.video) {
+    } else if (proposal.video) {
       const videoButton = document.createElement("button");
       videoButton.type = "button";
       videoButton.className = "video-open-button";
       videoButton.textContent = "🎬 Ver video del recorrido";
       videoButton.addEventListener("click", () => openVideo(proposal.video));
-      panel.append(path, videoButton);
-    } else {
-      panel.append(path);
+      panel.appendChild(videoButton);
     }
     panelsEl.appendChild(panel);
   });
