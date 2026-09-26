@@ -2,8 +2,8 @@
 // Para añadir una propuesta futura, agrega un objeto más a este array (misma cantidad de zonas).
 export const proposals = [
   {
-    id: "propuesta-b",
-    nombre: "Aula Magna: Sin Salida",
+    id: "aula_magna",
+    nombre: "Aula Magna",
     video: "images/propuesta-b/video-recorrido.mp4",
     historia:
       "Durante unas obras de mantenimiento rutinarias en el patio del colegio, los operarios derriban por error un muro donde había un conducto clausurado hace cien años. Tras el derrumbe queda al descubierto una zona del edificio olvidada misteriosamente. Un jefe de obra reúne a una comisión de investigación para observar el lugar antes de precintarlo, pero al adentrarse descubren una aterradora verdad: el antiguo colegio jamás se vació, sino que quedó atrapado en un bucle temporal custodiando el antiguo cementerio municipal sobre el que fue edificada la escuela actual.",
@@ -59,7 +59,7 @@ export const proposals = [
     ],
   },
   {
-    id: "propuesta-a",
+    id: "stranger_things",
     nombre: "Stranger Things",
     zonas: [
       {
@@ -113,7 +113,7 @@ export const proposals = [
     ],
   },
   {
-    id: "propuesta-c",
+    id: "orfanato",
     nombre: "Orfanato",
     historia:
       "Idea aún en desarrollo: se trabaja con la sensación de un colegio abandonado donde quedan huellas de infancia y pérdida, sin una escenografía cerrada aún definida para cada tramo.",
@@ -137,8 +137,8 @@ export const proposals = [
     ],
   },
   {
-    id: "cosecha-2015",
-    nombre: "La Cosecha de 2015",
+    id: "cosecha",
+    nombre: "Cosecha",
     video: "images/cosecha/46ce9665-fed5-45d8-b241-e58345a4c23d.MP4",
     historia:
       "Es 2026 y la vida ha transcurrido tranquila en Vilassar de Mar, hasta ahora. Desde mediados de septiembre han empezado a producirse desapariciones. Todas tienen un elemento en común: son niños y niñas de 11 años, nacidos en 2015. Los niños se acuestan una noche y a la mañana siguiente ya no están. La noticia llega a todos los rincones del mundo y lejos, muy lejos, en los pueblos andinos, una mujer muy anciana se estremece al recordar: 'No puede ser, ¡está volviendo a suceder!'.",
