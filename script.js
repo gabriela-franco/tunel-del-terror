@@ -3,6 +3,8 @@ import { proposals } from "./proposals.js?v=9";
 const tabsEl = document.getElementById("tabs");
 const panelsEl = document.getElementById("proposal-panels");
 const fieldsetEl = document.getElementById("propuesta-fieldset");
+const resultsTotalEl = document.getElementById("results-total");
+const resultsListEl = document.getElementById("results-list");
 const overlay = document.getElementById("modal-overlay");
 const modalTitle = document.getElementById("modal-title");
 const modalFoto = document.getElementById("modal-foto");
@@ -212,6 +214,46 @@ function votoKey(alumno) {
   return alumno.trim().toLowerCase();
 }
 
+function getResultsKey() {
+  return document.body.dataset.resultsKey || "12345";
+}
+
+async function loadResults() {
+  try {
+    const response = await fetch(`/.netlify/functions/resultados?key=${encodeURIComponent(getResultsKey())}`);
+    if (!response.ok) {
+      resultsTotalEl.textContent = "Total: 0 votos";
+      resultsListEl.innerHTML = "";
+      return;
+    }
+
+    const data = await response.json();
+    const counts = data.counts || {};
+    const total = data.total || 0;
+
+    resultsTotalEl.textContent = `Total: ${total} voto${total === 1 ? "" : "s"}`;
+
+    const proposalMap = Object.fromEntries(proposals.map((proposal) => [proposal.id, proposal.nombre]));
+    const items = Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .map(([proposalId, count]) => {
+        const name = proposalMap[proposalId] || proposalId;
+        return `
+          <li>
+            <span class="proposal-name">${name}</span>
+            <span class="proposal-count">${count}</span>
+          </li>
+        `;
+      })
+      .join("");
+
+    resultsListEl.innerHTML = items || '<li><span class="proposal-name">Todavía no hay votos</span><span class="proposal-count">0</span></li>';
+  } catch (err) {
+    resultsTotalEl.textContent = "Total: 0 votos";
+    resultsListEl.innerHTML = "";
+  }
+}
+
 voteForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -252,6 +294,7 @@ voteForm.addEventListener("submit", async (event) => {
       localStorage.setItem(localKey, "1");
       voteMessage.textContent = "¡Gracias por tu voto!";
       voteForm.reset();
+      await loadResults();
     }
   } catch (err) {
     voteMessage.textContent = "Error de conexión, inténtalo de nuevo.";
@@ -265,3 +308,4 @@ voteForm.addEventListener("submit", async (event) => {
 renderTabs();
 renderPanels();
 renderVoteOptions();
+loadResults();

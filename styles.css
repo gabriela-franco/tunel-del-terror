@@ -403,6 +403,53 @@ body {
 }
 
 /* Vote footer */
+.results-panel {
+  max-width: 700px;
+  margin: 1.5rem auto 0;
+  background: var(--panel);
+  border: 1px solid var(--accent-2);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+}
+
+.results-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.results-total {
+  margin: 0 0 1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.results-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+}
+
+.results-list li .proposal-name {
+  font-weight: 600;
+}
+
+.results-list li .proposal-count {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 .vote-footer {
   max-width: 500px;
   margin: 2rem auto 3rem;
