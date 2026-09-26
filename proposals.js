@@ -178,6 +178,22 @@ export const proposals = [
     ],
   },
   {
+    id: "matadero",
+    nombre: "Matadero",
+    historia:
+      "Sin descripción de escenografías especificada hasta el momento",
+    zonas: [
+      {
+        id: "matadero-idea",
+        nombre: "Concepto — Matadero",
+        nota: "Sin descripción de escenografías especificada hasta el momento",
+        foto: "images/obra/escena-final.png",
+        boceto: "images/obra/escena-final.png",
+        texto: "Sin descripción de escenografías especificada hasta el momento",
+      },
+    ],
+  },
+  {
     id: "sala-colectiva",
     nombre: "Cada sala, una historia",
     historia:

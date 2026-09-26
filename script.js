@@ -51,9 +51,18 @@ function renderPanels() {
       panel.appendChild(historia);
     }
 
-    const isCollectiveSala = proposal.id === "sala-colectiva";
+    const isMatadero = proposal.id === "matadero";
 
-    if (!isCollectiveSala) {
+    if (isMatadero) {
+      if (proposal.video) {
+        const videoButton = document.createElement("button");
+        videoButton.type = "button";
+        videoButton.className = "video-open-button";
+        videoButton.textContent = "🎬 Ver video del recorrido";
+        videoButton.addEventListener("click", () => openVideo(proposal.video));
+        panel.appendChild(videoButton);
+      }
+    } else {
       const path = document.createElement("div");
       path.className = "path";
 
@@ -102,13 +111,6 @@ function renderPanels() {
       } else {
         panel.append(path);
       }
-    } else if (proposal.video) {
-      const videoButton = document.createElement("button");
-      videoButton.type = "button";
-      videoButton.className = "video-open-button";
-      videoButton.textContent = "🎬 Ver video del recorrido";
-      videoButton.addEventListener("click", () => openVideo(proposal.video));
-      panel.appendChild(videoButton);
     }
     panelsEl.appendChild(panel);
   });
@@ -151,10 +153,13 @@ function openModal(proposal, zonaIndex) {
 function renderModalZona() {
   const zona = currentProposal.zonas[currentZonaIndex];
   modalTitle.textContent = `${currentProposal.nombre} — ${zona.nombre}`;
-  modalFoto.src = zona.foto;
-  modalFoto.alt = `Foto real: ${zona.nombre}`;
-  modalBoceto.src = zona.boceto;
-  modalBoceto.alt = `Boceto de referencia: ${zona.nombre}`;
+
+  modalFoto.src = "";
+  modalFoto.alt = "";
+  modalBoceto.src = "";
+  modalBoceto.alt = "";
+  document.querySelector(".modal-images").style.display = "none";
+
   modalTexto.textContent = zona.texto;
 }
 
