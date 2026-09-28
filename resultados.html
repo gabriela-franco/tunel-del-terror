@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Resultados de votación — Túnel del Terror</title>
+  <link rel="stylesheet" href="resultados.css" />
+  <script src="resultados.js" defer></script>
+</head>
+<body>
+  <main class="results-page">
+    <header class="results-header">
+      <p class="eyebrow">Túnel del Terror</p>
+      <h1>Resultados de la votación</h1>
+      <p class="subtitle">Recuento actual de votos por propuesta</p>
+    </header>
+
+    <section class="results-content" aria-labelledby="chart-title">
+      <div class="chart-column">
+        <h2 id="chart-title">Distribución de votos</h2>
+        <div class="chart-wrap">
+          <div id="votes-chart" class="votes-chart" role="img" aria-label="Gráfico circular de los resultados" style="--chart: conic-gradient(#282328 0% 100%)">
+            <div class="chart-center">
+              <strong id="votes-total">—</strong>
+              <span>votos</span>
+            </div>
+          </div>
+        </div>
+        <p id="results-status" class="results-status" role="status" aria-live="polite">Cargando resultados…</p>
+      </div>
+
+      <div class="legend-column">
+        <h2>Por propuesta</h2>
+        <ul id="results-legend" class="results-legend" aria-label="Desglose de votos"></ul>
+        <button id="refresh-results" class="refresh-button" type="button">Actualizar resultados</button>
+      </div>
+    </section>
+
+    <a class="back-link" href="/">Volver a las propuestas</a>
+  </main>
+</body>
+</html>
